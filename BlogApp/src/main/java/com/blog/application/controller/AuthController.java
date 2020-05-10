@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.blog.application.dto.LoginRequest;
 import com.blog.application.dto.RegisterRequest;
 import com.blog.application.service.AuthService;
 
@@ -23,6 +24,12 @@ public class AuthController {
 	{
 		authService.signup(registerRequest);
 		return new ResponseEntity<HttpStatus>(HttpStatus.OK);
+	}
+	
+	@PostMapping("/login")
+	public String login(@RequestBody LoginRequest loginRequest)
+	{
+		return authService.login(loginRequest);
 	}
 
 }
